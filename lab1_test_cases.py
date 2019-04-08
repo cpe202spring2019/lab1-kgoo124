@@ -84,13 +84,20 @@ class TestLab1(unittest.TestCase):
         self.assertEqual(bin_search(0, 2, 3, list_val), None )
 
     def test_bin_search_edge_cases(self):
+        """test edge cases where list is None or list is empty"""
         list_val = None
         with self.assertRaises(ValueError):  # used to check for exception
             bin_search(5, 0, 10, list_val)
 
-        list_val =[]
+        list_val = []
         self.assertEqual(bin_search(0, 0, len(list_val)-1, list_val), None )
-        
+       
+        list_val = [0]
+        self.assertEqual(bin_search(0, 0, len(list_val)-1, list_val), 0 )
+        list_val =[0, 1]
+        self.assertEqual(bin_search(0, 0, len(list_val)-1, list_val), 0 )
+        self.assertEqual(bin_search(1, 0, len(list_val)-1, list_val), 1 )
+
 
 
 if __name__ == "__main__":
